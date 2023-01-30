@@ -15,7 +15,7 @@ app.get('/api/notes', (req, res) => {
 res.sendFile(path.join(__dirname, './Develop/db/db.json'));
 })
 
-app.post('/api/upvotes/:review_id', (req, res) => {
+app.post('/api/notes/:review_id', (req, res) => {
 const notesTaker = JSON.parse(fs.readFileSync('./Develop/db/db.json'))
 const newNotes = req.body;
 notesTaker.push(newNotes)
@@ -23,5 +23,27 @@ fs.writeFileSync('./Develop/db/db.json', json.stringify(notesTaker))
 res.json(notesTaker);
 
 })
+
+app.delete('/api/notes/:review_id', (req, res) => {
+const notesTaker = JSON.parse(fs.readFileSync('./Develop/db/db.json'))
+const remove = note.filter(remove)
+fs.writeFileSync('./Develop/db/db.json', json.stringify(remove))
+res.json(remove);
+
+
+})
+
+app.get('/', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/index.html'))
+);
+
+
+app.get('/feedback', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/pages/notes.html'))
+);
+
+app.listen(PORT, () =>
+  console.log(`App listening on Port: 3001 🚀`)
+);
 
 
