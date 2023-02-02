@@ -35,14 +35,15 @@ res.json(notesTaker);
 
 })
 
-// app.delete('/api/notes/:review_id', (req, res) => {
-// const notesTaker = JSON.parse(fs.readFileSync('./db/db.json'))
-// const remove = note.filter(remove)
-// fs.writeFileSync('./db/db.json', json.stringify(remove))
-// res.json(remove);
+app.delete('/api/notes', (req, res) => {
+const notesTaker = JSON.parse(fs.readFileSync('./db/db.json'))
+console.log(notesTaker)
+const remove = newNotes.filter(remove)
+fs.writeFileSync('./db/db.json', JSON.stringify(remove))
+res.json(remove);
 
 
-// })
+})
 
 app.listen(PORT, () =>
   console.log(`App listening on Port: 3001 🚀, http://localhost:${PORT}`)
